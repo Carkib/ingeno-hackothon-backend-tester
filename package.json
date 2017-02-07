@@ -1,0 +1,24 @@
+{
+  "name": "ingeno-hackothon-backend-tester",
+  "version": "1.0.0",
+  "description": "**To test multiple backend endpoint**",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XavierSamuelHuppe/ingeno-hackothon-backend-tester.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XavierSamuelHuppe/ingeno-hackothon-backend-tester/issues"
+  },
+  "homepage": "https://github.com/XavierSamuelHuppe/ingeno-hackothon-backend-tester#readme"
+}
