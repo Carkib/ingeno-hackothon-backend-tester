@@ -1,6 +1,6 @@
 # INGENO hackothon backend tester  
 
-**To test multiple backend endpoint**
+**To test multiple backend endpoints**
 
 ## Summary
 This scratch-up project is intended to be used in hackothons to make it easy to test multiple team backends and show their result in real time.
