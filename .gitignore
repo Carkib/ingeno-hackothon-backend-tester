@@ -55,3 +55,6 @@ results.*
 # Gradle
 .gradle/**
 !gradle/wrapper/gradle-wrapper.jar
+
+# NPM and node
+/node_modules
