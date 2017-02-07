@@ -20,7 +20,6 @@ function readJSONFile(filename, callback) {
 app.get('/', function (req, res) {
     readJSONFile('results.json', function (err, json) {
       if(err) { throw err; }
-        console.log(json);
         res.send(json)
     });
 })
