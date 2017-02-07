@@ -1,14 +1,57 @@
-.gradle
-build/
+# Eclipse
+*.pydevproject
+.project
+.metadata
+/bin/**
+/tmp/**
+/tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/**
+.loadpath
+/src/main/resources/rebel.xml
 
-# Ignore Gradle GUI config
-gradle-app.setting
+# Intellij
+.idea/**
+/src/main/webapp/.idea/**
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+/out
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+# Locally stored "Eclipse launch configurations"
+*.launch
 
-# Cache of project
-.gradletasknamecache
+# Package Files
+/build
+*.jar
+*.war
+*.ear
+*.db
 
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+# Mac OSX
+.DS_Store
+.svn
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Logs
+*.log
+
+# Others
+*.*~
+*~
+.merge_file*
+results.*
+
+# Gradle
+.gradle/**
+!gradle/wrapper/gradle-wrapper.jar
