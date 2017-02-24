@@ -1,11 +1,7 @@
 package ca.ingeno.hackothon.tester;
 
-import ca.ingeno.hackothon.tester.request.RequestSender;
 import ca.ingeno.hackothon.tester.tests.ParcometreTests;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,7 +18,7 @@ public class TeamTester {
     tests.add(this::APassedTest);
     tests.add(this::AFailedTest);
     tests.add(this::ARandomTest);
-    tests.add(this::specificLocationNearestParcometreTest);
+    tests.add(ParcometreTests::givenAspecificLocationReturnTheNearestParcometre);
   }
 
   public TeamResult test(String endPoint) {
@@ -47,9 +43,5 @@ public class TeamTester {
     Random random = new Random();
     boolean result = random.nextBoolean();
     return new TestResult("ARandomTest", result);
-  }
-
-  public TestResult specificLocationNearestParcometreTest(String endpoint) {
-      return ParcometreTests.specificLocationNearestParcometreTest(endpoint);
   }
 }

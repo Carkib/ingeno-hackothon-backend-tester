@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class RequestSender
+public class HTTPRequestSender
 {
     public static String getRequestAtUrl(String givenUrl)
     {
@@ -23,7 +23,6 @@ public class RequestSender
             String output;
 
             StringBuilder sb = new StringBuilder();
-            System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
                 sb.append(output);
             }
