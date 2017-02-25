@@ -4,38 +4,33 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HTTPRequestSender
-{
-    public static String getRequestAtUrl(String givenUrl)
-    {
-        try {
-            URL url = new URL(givenUrl);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
+public class HTTPRequestSender {
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    (conn.getInputStream())));
+  public static String getRequestAtUrl(String givenUrl) throws FailedTestException {
+    try {
+      URL url = new URL(givenUrl);
+      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+      conn.setRequestMethod("GET");
+      conn.setRequestProperty("Accept", "application/json");
 
-            String output;
+      BufferedReader br = new BufferedReader(new InputStreamReader(
+          (conn.getInputStream())));
 
-            StringBuilder sb = new StringBuilder();
-            while ((output = br.readLine()) != null) {
-                sb.append(output);
-            }
+      String output;
 
-            conn.disconnect();
+      StringBuilder sb = new StringBuilder();
+      while ((output = br.readLine()) != null) {
+        sb.append(output);
+      }
 
-            return sb.toString();
+      conn.disconnect();
 
-        } catch (MalformedURLException e) {
-            return "failed";
+      return sb.toString();
 
-        } catch (IOException e) {
-            return "failed";
-        }
+    } catch (IOException e) {
+      throw new FailedTestException();
     }
+  }
 }
