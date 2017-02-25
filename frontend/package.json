@@ -4,7 +4,12 @@
   "description": "**To test multiple backend endpoint**",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-json-viewer": "^1.6.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   },
   "devDependencies": {},
   "scripts": {

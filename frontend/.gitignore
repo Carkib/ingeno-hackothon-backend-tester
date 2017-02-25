@@ -1,0 +1,60 @@
+# Eclipse
+*.pydevproject
+.project
+.metadata
+/bin/**
+/tmp/**
+/tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/**
+.loadpath
+/src/main/resources/rebel.xml
+
+# Intellij
+.idea/**
+/src/main/webapp/.idea/**
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+/out
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# Package Files
+/build
+*.jar
+*.war
+*.ear
+*.db
+
+# Mac OSX
+.DS_Store
+.svn
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Logs
+*.log
+
+# Others
+*.*~
+*~
+.merge_file*
+results.*
+
+# Gradle
+.gradle/**
+!gradle/wrapper/gradle-wrapper.jar
+
+# NPM and node
+/node_modules
