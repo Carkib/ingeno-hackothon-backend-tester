@@ -18,7 +18,8 @@ public class TeamTester {
     tests.add(this::APassedTest);
     tests.add(this::AFailedTest);
     tests.add(this::ARandomTest);
-    tests.add(ParcometreTests::givenAspecificLocationReturnTheNearestParcometre);
+    tests.add(ParcometreTests::givenASpecificLocationReturnTheNearestParcometre);
+    tests.add(ParcometreTests::askingForTheTwoClosestPointFromIngenoReturnsTheTwoCorrectParkings);
   }
 
   public TeamResult test(String endPoint) {
