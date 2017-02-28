@@ -1,10 +1,14 @@
 import React from "react";
+import Team from "./Team.js";
 
 class App extends React.Component {
     render() {
+        
         return (
             <div>
-                Hello World!!
+                {this.props.json.map(function (team) {
+                    return <Team key={team.teamName} team={team}></Team>;
+                })}
             </div>
         );
     }
