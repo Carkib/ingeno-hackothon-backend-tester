@@ -22800,10 +22800,10 @@ var Right = function (_React$Component) {
                 "div",
                 null,
                 this.props.passedTests.map(function (test) {
-                    return _react2.default.createElement(_PassedTest2.default, { key: test, test: test });
+                    return _react2.default.createElement(_PassedTest2.default, { key: test.id, test: test });
                 }),
                 this.props.failedTests.map(function (test) {
-                    return _react2.default.createElement(_FailedTest2.default, { key: test, test: test });
+                    return _react2.default.createElement(_FailedTest2.default, { key: test.id, test: test });
                 })
             );
         }

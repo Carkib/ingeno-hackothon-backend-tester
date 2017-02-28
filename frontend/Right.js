@@ -16,10 +16,10 @@ class Right extends React.Component {
         return (
             <div>
                 {this.props.passedTests.map(function (test) {
-                    return <PassedTest key={test} test={test}></PassedTest>;
+                    return <PassedTest key={test.id} test={test}></PassedTest>;
                 })}
                 {this.props.failedTests.map(function (test) {
-                    return <FailedTest key={test} test={test}></FailedTest>;
+                    return <FailedTest key={test.id} test={test}></FailedTest>;
                 })}
             </div>
         );
