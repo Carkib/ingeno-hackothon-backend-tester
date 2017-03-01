@@ -1,8 +1,10 @@
 package ca.ingeno.hackothon.tester;
 
 import ca.ingeno.hackothon.tester.tests.ParcometreTests;
+import ca.ingeno.hackothon.tester.tests.ParkingZoneTests;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
@@ -20,6 +22,15 @@ public class TeamTester {
     tests.add(this::ARandomTest);
     tests.add(ParcometreTests::givenASpecificLocationReturnTheNearestParcometre);
     tests.add(ParcometreTests::askingForTheTwoClosestPointFromIngenoReturnsTheTwoCorrectParkings);
+
+    tests.addAll(Arrays.asList(
+            ParkingZoneTests::givenASpecificLocationIsInsideParkingZone01,
+            ParkingZoneTests::givenASpecificLocationIsOutsideParkingZone01,
+            ParkingZoneTests::givenASpecificLocationIsInsideParkingZone12,
+            ParkingZoneTests::givenASpecificLocationIsOutsideParkingZone12,
+            ParkingZoneTests::givenASpecificLocationIsInsideParkingZone15,
+            ParkingZoneTests::givenASpecificLocationIsOutsideParkingZone15
+    ));
   }
 
   public TeamResult test(String endPoint) {
