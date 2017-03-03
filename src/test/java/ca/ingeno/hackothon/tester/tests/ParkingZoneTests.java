@@ -1,6 +1,7 @@
 package ca.ingeno.hackothon.tester.tests;
 
 import ca.ingeno.hackothon.tester.TestResult;
+import ca.ingeno.hackothon.tester.TestStatus;
 import ca.ingeno.hackothon.tester.request.FailedTestException;
 import ca.ingeno.hackothon.tester.request.HTTPRequestSender;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class ParkingZoneTests {
 
-    private static final String ZONE_ENDPOINT = "/parkinzone?sign_type=";
+    private static final String ZONE_ENDPOINT = "/parkingzone?sign_type=";
 
     private static final String ZONE_01_CODES = "PS1291,PS1292,PS1292,PS8002";
     private static final String ZONE_12_CODES = "PS7203,PS2151,PS2152,PS2153";
@@ -32,46 +33,47 @@ public class ParkingZoneTests {
     private static final String TEST_15_LONG_FAIL = "-71.204555";
 
     public static TestResult givenASpecificLocationIsInsideParkingZone01(String endpoint) {
-        boolean result = isLocationInsideTheZone(endpoint, ZONE_01_CODES, TEST_01_LAT, TEST_01_LONG);
-        return new TestResult("Given signalisation type code return the nearest parking meter", result);
+        boolean result = isLocationInsideTheZone(endpoint, ZONE_01_CODES, TEST_01_LAT, TEST_01_LONG, TestStatus.SUCCESS);
+        return new TestResult("Given a polygon that surround all signs from a code type Then this location is inside ", result);
     }
 
     public static TestResult givenASpecificLocationIsOutsideParkingZone01(String endpoint) {
-        boolean result = isLocationInsideTheZone(endpoint, ZONE_01_CODES, TEST_01_LAT_FAIL, TEST_01_LONG_FAIL);
-        return new TestResult("Given a specific location return the nearest parking meter", !result);
+        boolean result = isLocationInsideTheZone(endpoint, ZONE_01_CODES, TEST_01_LAT_FAIL, TEST_01_LONG_FAIL, TestStatus.FAILURE);
+        return new TestResult("Given a polygon that surround all signs from a code type Then this location is outside", result);
     }
 
     public static TestResult givenASpecificLocationIsInsideParkingZone12(String endpoint) {
-        boolean result = isLocationInsideTheZone(endpoint, ZONE_12_CODES, TEST_12_LAT, TEST_12_LONG);
-        return new TestResult("Given a specific location return the nearest parking meter", result);
+        boolean result = isLocationInsideTheZone(endpoint, ZONE_12_CODES, TEST_12_LAT, TEST_12_LONG, TestStatus.SUCCESS);
+        return new TestResult("Given a polygon that surround all signs from a code type Then excluding sign that are not closer than 500 meter of the closest one Then this location is inside", result);
     }
 
     public static TestResult givenASpecificLocationIsOutsideParkingZone12(String endpoint) {
-        boolean result = isLocationInsideTheZone(endpoint, ZONE_12_CODES, TEST_12_LAT_FAIL, TEST_12_LONG_FAIL);
-        return new TestResult("Given a specific location return the nearest parking meter", !result);
+        boolean result = isLocationInsideTheZone(endpoint, ZONE_12_CODES, TEST_12_LAT_FAIL, TEST_12_LONG_FAIL, TestStatus.FAILURE);
+        return new TestResult("Given a polygon that surround all signs from a code type Then this location is outside", result);
     }
 
     public static TestResult givenASpecificLocationIsInsideParkingZone15(String endpoint) {
-        boolean result = isLocationInsideTheZone(endpoint, ZONE_15_CODES, TEST_15_LAT, TEST_15_LONG);
-        return new TestResult("Given a specific location return the nearest parking meter", result);
+        boolean result = isLocationInsideTheZone(endpoint, ZONE_15_CODES, TEST_15_LAT, TEST_15_LONG, TestStatus.SUCCESS);
+        return new TestResult("Given a polygon that surround all signs from a code type Then this location is inside", result);
     }
 
     public static TestResult givenASpecificLocationIsOutsideParkingZone15(String endpoint) {
-        boolean result = isLocationInsideTheZone(endpoint, ZONE_15_CODES, TEST_15_LAT_FAIL, TEST_15_LONG_FAIL);
-        return new TestResult("Given a specific location return the nearest parking meter", !result);
+        boolean result = isLocationInsideTheZone(endpoint, ZONE_15_CODES, TEST_15_LAT_FAIL, TEST_15_LONG_FAIL, TestStatus.FAILURE);
+        return new TestResult("Given a polygon that surround all signs from a code type Then this location is outside", result);
     }
 
-    private static boolean isLocationInsideTheZone(String endpoint, String zoneCodes, String locationLat, String locationLong) {
-        boolean result = false;
+    private static boolean isLocationInsideTheZone(String endpoint, String zoneCodes, String locationLat, String locationLong ,TestStatus expectedStatus) {
+        TestStatus result = TestStatus.FAILURE;
+
         try {
             List<JsonNode> nodes =  getFeaturesAtURL("http://" + endpoint + ZONE_ENDPOINT + zoneCodes);
             if (nodes.size() == 1) {
                 result = geojsonHelper.checkIfPointIsInTheZone(nodes.get(0), locationLat, locationLong);
             }
         } catch (Exception e) {
-            result = false;
+            result = TestStatus.ERROR;
         }
-        return result;
+        return (result == expectedStatus);
     }
 
     private static List<JsonNode> getFeaturesAtURL(String url) throws FailedTestException, IOException {

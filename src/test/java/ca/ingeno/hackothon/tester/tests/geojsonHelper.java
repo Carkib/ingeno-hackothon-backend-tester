@@ -1,5 +1,6 @@
 package ca.ingeno.hackothon.tester.tests;
 
+import ca.ingeno.hackothon.tester.TestStatus;
 import ca.ingeno.hackothon.tester.utils.polygon.Point;
 import ca.ingeno.hackothon.tester.utils.polygon.Polygon;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -32,10 +33,12 @@ public class geojsonHelper
         return false;
     }
 
-    public static boolean checkIfPointIsInTheZone(JsonNode polygonCoordinates, String latitude, String longitude) {
+    public static TestStatus checkIfPointIsInTheZone(JsonNode polygonCoordinates, String latitude, String longitude) {
         Polygon polygon = buildPolygonFromCoordinates(polygonCoordinates);
         Point point = new Point(getFloatValue(longitude), getFloatValue(latitude));
-        return polygon.contains(point);
+
+
+        return (polygon.contains(point)) ? TestStatus.SUCCESS : TestStatus.FAILURE;
     }
 
     private static Polygon buildPolygonFromCoordinates(JsonNode coordinates) {
