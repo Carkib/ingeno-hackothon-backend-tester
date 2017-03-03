@@ -15,6 +15,7 @@ public class MainTester {
 
   public static void main(String[] args) {
     MainTester tester = new MainTester();
+    System.out.println("Started.");
     do {
       tester.test();
       System.out.println("Updated results at " + new SimpleDateFormat("hh:mm:ss").format(new Date()));
