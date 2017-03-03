@@ -20,12 +20,16 @@ public class TeamResult {
   }
 
   public void addTest(TestResult test) {
-    totalTestCount += 1;
-    if (test.isPassed()) {
+    if (test.isHidden() && test.isPassed()) {
       totalTestPassed += 1;
-      passedTest.add(test.getTestName());
     } else {
-      failedTest.add(test.getTestName());
+      totalTestCount += 1;
+      if (test.isPassed()) {
+        totalTestPassed += 1;
+        passedTest.add(test.getTestName());
+      } else {
+        failedTest.add(test.getTestName());
+      }
     }
   }
 
