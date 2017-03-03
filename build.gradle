@@ -7,7 +7,7 @@ repositories {
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.18'
     testCompile 'com.google.code.gson:gson:2.8.0'
-    testCompile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+    testCompile 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
     testCompile 'junit:junit:4.12'
 }
 
