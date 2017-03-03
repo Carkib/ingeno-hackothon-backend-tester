@@ -15,7 +15,7 @@ function readTextFile(file, callback) {
     rawFile.send(null);
 }
 
-// setTimeout("location.reload(true);", '5000');
+setTimeout("location.reload(true);", '5000');
 
 readTextFile("../results.json", function (text) {
     var todos = JSON.parse(text);
