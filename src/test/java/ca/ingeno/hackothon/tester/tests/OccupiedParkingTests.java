@@ -9,7 +9,7 @@ import org.joda.time.DateTime;
 import java.io.IOException;
 import java.util.List;
 
-public class occupiedParkingTests
+public class OccupiedParkingTests
 {
     private static final String NEAREST_LONG_BEFORE_10 = "-71.2209548908844";
 
@@ -41,11 +41,19 @@ public class occupiedParkingTests
 
     private static final String A_PARKING_NEAR_SAINT_PAUL = "/nearest?location=-71.214475345103,46.8168303308662";
 
-    private occupiedParkingTests()
+    private OccupiedParkingTests()
     {
     }
 
-    public static TestResult nearestAtAnyTimeReturnTheAppropriateParkingEasy(String endpoint)
+    public static TestResult theNearestRouteConsiderMessageSentByTheCommunity(String endpoint)
+    {
+        boolean result =
+                nearestAtAnyTimeReturnTheAppropriateParkingForBoris(endpoint) && nearestAtAnytimeReturnTheAppropriateParkingSaintPaul(
+                        endpoint);
+        return new TestResult("The nearest route use the messages sent by the community", result);
+    }
+
+    private static boolean nearestAtAnyTimeReturnTheAppropriateParkingForBoris(String endpoint)
     {
         boolean result = false;
         if (getHoursOfTheDay() < 10)
@@ -55,41 +63,35 @@ public class occupiedParkingTests
 
         if (getHoursOfTheDay() >= 10 && getHoursOfTheDay() < 11)
         {
-            result = returnTheClosestPointBoris(endpoint, NEAREST_LONG_BEFORE_11,  NEAREST_LAT_BEFORE_11);
+            result = returnTheClosestPointBoris(endpoint, NEAREST_LONG_BEFORE_11, NEAREST_LAT_BEFORE_11);
         }
 
         if (getHoursOfTheDay() >= 11)
         {
-            result = returnTheClosestPointBoris(endpoint, NEAREST_LONG_BEFORE_13,  NEAREST_LAT_BEFORE_13);
+            result = returnTheClosestPointBoris(endpoint, NEAREST_LONG_BEFORE_13, NEAREST_LAT_BEFORE_13);
         }
 
         if (getHoursOfTheDay() >= 16)
         {
             result = result && returnTheFinalClosestPoint(endpoint);
         }
-
-        return new TestResult("The nearest route, at any time, return the appropriate parking", result);
+        return result;
     }
 
-    public static TestResult nearestAtAnytimeReturnTheAppropriateParkingMedium(String endpoint)
+    private static boolean nearestAtAnytimeReturnTheAppropriateParkingSaintPaul(String endpoint)
     {
         boolean result = false;
-        if (getHoursOfTheDay() < 10)
+        if (getHoursOfTheDay() >= 11 && getHoursOfTheDay() < 13)
+        {
+            result = returnTheClosestPointSaintPaul(endpoint, SECOND_PARKING_SAINT_PAUL_LONG,
+                    SECOND_PARKING_SAINT_PAUL_LAT);
+        }
+        else
         {
             result = returnTheClosestPointSaintPaul(endpoint, A_PARKING_SAINT_PAUL_LONG, A_PARKING_SAINT_PAUL_LAT);
         }
 
-        if (getHoursOfTheDay() >= 10 && getHoursOfTheDay() < 13)
-        {
-            result = returnTheClosestPointSaintPaul(endpoint, SECOND_PARKING_SAINT_PAUL_LONG,  SECOND_PARKING_SAINT_PAUL_LAT);
-        }
-
-        if (getHoursOfTheDay() >= 13)
-        {
-            result = returnTheClosestPointSaintPaul(endpoint, A_PARKING_SAINT_PAUL_LONG,  A_PARKING_SAINT_PAUL_LAT);
-        }
-
-        return new TestResult("The nearest route, at any time, return the appropriate parking", result);
+        return result;
     }
 
     private static boolean returnTheClosestPointBoris(String endpoint, String longi, String lat)
@@ -97,7 +99,7 @@ public class occupiedParkingTests
         try
         {
             List<JsonNode> list_of_points = getFeaturesAtURL("http://" + endpoint + BORIS_LOCATION_CLOSEST);
-            return listContainTheClosestPoint(list_of_points,longi, lat);
+            return listContainTheClosestPoint(list_of_points, longi, lat);
         }
         catch (Exception e)
         {
@@ -105,13 +107,12 @@ public class occupiedParkingTests
         }
     }
 
-
     private static boolean returnTheClosestPointSaintPaul(String endpoint, String longi, String lat)
     {
         try
         {
             List<JsonNode> list_of_points = getFeaturesAtURL("http://" + endpoint + A_PARKING_NEAR_SAINT_PAUL);
-            return listContainTheClosestPoint(list_of_points,longi, lat);
+            return listContainTheClosestPoint(list_of_points, longi, lat);
         }
         catch (Exception e)
         {
@@ -140,8 +141,7 @@ public class occupiedParkingTests
 
     private static boolean listContainTheClosestPoint(List<JsonNode> list_of_points, String longi, String lat)
     {
-        boolean firstPointPresent = geojsonHelper
-                .checkIfListOfFeaturesContainsPoint(list_of_points, longi, lat);
+        boolean firstPointPresent = geojsonHelper.checkIfListOfFeaturesContainsPoint(list_of_points, longi, lat);
         return list_of_points.size() == 1 && firstPointPresent;
     }
 
