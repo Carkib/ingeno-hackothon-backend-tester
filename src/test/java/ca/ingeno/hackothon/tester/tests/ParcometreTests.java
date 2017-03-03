@@ -11,19 +11,19 @@ import java.util.List;
 public final class ParcometreTests
 {
 
-    private static final String INGENO_LOCATION_2_CLOSEST = "/nearest/?location=-71.225571,46.813562&quantity=2";
+    private static final String INGENO_LOCATION_2_CLOSEST = "/nearest?location=-71.225571,46.813562&quantity=2";
 
-    private static final String INGENO_LOCATION_RADIUS_OF_15 = "/nearest/?location=-71.225571,46.813562&radius=15";
+    private static final String INGENO_LOCATION_RADIUS_OF_15 = "/nearest?location=-71.225571,46.813562&radius=15";
 
-    private static final String INGENO_LOCATION_RADIUS_OF_15_QUANTITY_OF_10 = "/nearest/?location=-71.225571,46.813562&radius=15&quantity=10";
+    private static final String INGENO_LOCATION_RADIUS_OF_15_QUANTITY_OF_10 = "/nearest?location=-71.225571,46.813562&radius=15&quantity=10";
 
-    private static final String INGENO_LOCATION_RADIUS_OF_1 = "/nearest/?location=-71.225571,46.813562&radius=1";
+    private static final String INGENO_LOCATION_RADIUS_OF_1 = "/nearest?location=-71.225571,46.813562&radius=1";
 
-    private static final String SPECIFIC_LOCATION = "/nearest/?location=-71.2266796885977,46.8125494145";
+    private static final String SPECIFIC_LOCATION = "/nearest?location=-71.2266796885977,46.8125494145";
 
-    private static final String SPECIFIC_LOCATION_10_CLOSEST = "/nearest/?location=-71.2266796885977,46.8125494145&quantity=10";
+    private static final String SPECIFIC_LOCATION_10_CLOSEST = "/nearest?location=-71.2266796885977,46.8125494145&quantity=10";
 
-    private static final String SPECIFIC_LOCATION_RADIUS_100000_QUANTITY_1 = "/nearest/?location=-71.2266796885977,46.8125494145&radius=100000&quantity=1";
+    private static final String SPECIFIC_LOCATION_RADIUS_100000_QUANTITY_1 = "/nearest?location=-71.2266796885977,46.8125494145&radius=100000&quantity=1";
 
     private static final String CLOSE_TO_INGENO_LONG1 = "-71.2255202738255";
 
