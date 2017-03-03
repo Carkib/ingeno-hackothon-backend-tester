@@ -34,32 +34,32 @@ public class ParkingZoneTests {
 
     public static TestResult givenASpecificLocationIsInsideParkingZone01(String endpoint) {
         boolean result = isLocationInsideTheZone(endpoint, ZONE_01_CODES, TEST_01_LAT, TEST_01_LONG, TestStatus.SUCCESS);
-        return new TestResult("Given a polygon that surround all signs from a code type Then this location is inside ", result);
+        return new TestResult("Parking zone #1 : Given a polygon that surround all signs from a code type Then this location is inside ", result);
     }
 
     public static TestResult givenASpecificLocationIsOutsideParkingZone01(String endpoint) {
         boolean result = isLocationInsideTheZone(endpoint, ZONE_01_CODES, TEST_01_LAT_FAIL, TEST_01_LONG_FAIL, TestStatus.FAILURE);
-        return new TestResult("Given a polygon that surround all signs from a code type Then this location is outside", result);
+        return new TestResult("Parking zone #1 : Given a polygon that surround all signs from a code type Then this location is outside", result);
     }
 
     public static TestResult givenASpecificLocationIsInsideParkingZone12(String endpoint) {
         boolean result = isLocationInsideTheZone(endpoint, ZONE_12_CODES, TEST_12_LAT, TEST_12_LONG, TestStatus.SUCCESS);
-        return new TestResult("Given a polygon that surround all signs from a code type Then excluding sign that are not closer than 500 meter of the closest one Then this location is inside", result);
+        return new TestResult("Parking zone #2 : Given a polygon that surround all signs from a code type Then excluding sign that are not closer than 500 meter of the closest one Then this location is inside", result);
     }
 
     public static TestResult givenASpecificLocationIsOutsideParkingZone12(String endpoint) {
         boolean result = isLocationInsideTheZone(endpoint, ZONE_12_CODES, TEST_12_LAT_FAIL, TEST_12_LONG_FAIL, TestStatus.FAILURE);
-        return new TestResult("Given a polygon that surround all signs from a code type Then this location is outside", result);
+        return new TestResult("Parking zone #2 : Given a polygon that surround all signs from a code type Then this location is outside", result);
     }
 
     public static TestResult givenASpecificLocationIsInsideParkingZone15(String endpoint) {
         boolean result = isLocationInsideTheZone(endpoint, ZONE_15_CODES, TEST_15_LAT, TEST_15_LONG, TestStatus.SUCCESS);
-        return new TestResult("Given a polygon that surround all signs from a code type Then this location is inside", result);
+        return new TestResult("Parking zone #3 : Given a polygon that surround all signs from a code type Then this location is inside", result);
     }
 
     public static TestResult givenASpecificLocationIsOutsideParkingZone15(String endpoint) {
         boolean result = isLocationInsideTheZone(endpoint, ZONE_15_CODES, TEST_15_LAT_FAIL, TEST_15_LONG_FAIL, TestStatus.FAILURE);
-        return new TestResult("Given a polygon that surround all signs from a code type Then this location is outside", result);
+        return new TestResult("Parking zone #3 : Given a polygon that surround all signs from a code type Then this location is outside", result);
     }
 
     private static boolean isLocationInsideTheZone(String endpoint, String zoneCodes, String locationLat, String locationLong ,TestStatus expectedStatus) {
