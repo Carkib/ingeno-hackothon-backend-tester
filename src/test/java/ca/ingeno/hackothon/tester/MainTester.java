@@ -18,11 +18,6 @@ public class MainTester {
     do {
       tester.test();
       System.out.println("Updated results at " + new SimpleDateFormat("hh:mm:ss").format(new Date()));
-      try {
-        Thread.sleep(5000);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
     } while (true);
   }
 
