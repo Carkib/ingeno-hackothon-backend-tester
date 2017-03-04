@@ -21,10 +21,10 @@ public class TeamTester
     {
         teamResult = new TeamResult(teamName);
         tests = new ArrayList<>();
-        tests.add(this::APassedTest);
-        tests.add(this::AFailedTest);
-        tests.add(this::ARandomTest);
-        tests.add(this::AHiddenTest);
+//        tests.add(this::APassedTest);
+//        tests.add(this::AFailedTest);
+//        tests.add(this::ARandomTest);
+//        tests.add(this::AHiddenTest);
         tests.add(ParcometreTests::givenASpecificLocationReturnTheNearestParcometre);
         tests.add(ParcometreTests::canSpecifyASpecificQuantityOfPointsToReturn);
         tests.add(ParcometreTests::canSpecifyARadiusConstraint);

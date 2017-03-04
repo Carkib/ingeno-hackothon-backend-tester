@@ -10489,7 +10489,7 @@ var PassedTest = function (_React$Component) {
         value: function render() {
             var styles = {
                 test: {
-                    color: "white",
+                    color: "deeppink",
                     backgroundColor: "#8ee547",
                     fontSize: 24,
                     margin: "0px 3px 3px",
