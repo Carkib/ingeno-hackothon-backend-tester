@@ -30,6 +30,7 @@ public class TeamTester
         tests.add(ParcometreTests::canSpecifyARadiusConstraint);
         tests.add(ParcometreTests::edgeCases);
         tests.add(OccupiedParkingTests::theNearestRouteConsiderMessageSentByTheCommunity);
+        tests.add(OccupiedParkingTests::secretRoute);
 
         tests.addAll(Arrays.asList(ParkingZoneTests::givenASpecificLocationIsInsideParkingZone01,
                 ParkingZoneTests::givenASpecificLocationIsOutsideParkingZone01,

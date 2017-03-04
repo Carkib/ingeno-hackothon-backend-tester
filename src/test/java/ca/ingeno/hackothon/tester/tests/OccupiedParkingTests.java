@@ -41,6 +41,13 @@ public class OccupiedParkingTests
 
     private static final String A_PARKING_NEAR_SAINT_PAUL = "/nearest?location=-71.214475345103,46.8168303308662";
 
+    private static final String SECRET_LOCATION = "/nearest/secret?location=-71.2126272666451,46.8176939819953";
+
+    private static final String SECRET_LOCATION_LONG = "-71.2126589543274";
+
+    private static final String SECRET_LOCATION_LAT = "46.817588814758";
+
+
     private OccupiedParkingTests()
     {
     }
@@ -50,7 +57,16 @@ public class OccupiedParkingTests
         boolean result =
                 nearestAtAnyTimeReturnTheAppropriateParkingForBoris(endpoint) && nearestAtAnytimeReturnTheAppropriateParkingSaintPaul(
                         endpoint);
-        return new TestResult("The nearest route use the messages sent by the community", result);
+        return new TestResult("The nearest route uses messages sent by the community", result);
+    }
+
+    public static TestResult secretRoute(String endpoint)
+    {
+        boolean result =returnTheClosestSecretPoint(endpoint);
+
+        TestResult secretResult = new TestResult("Secret test", result);
+        secretResult.setHidden(true);
+        return secretResult;
     }
 
     private static boolean nearestAtAnyTimeReturnTheAppropriateParkingForBoris(String endpoint)
@@ -75,6 +91,7 @@ public class OccupiedParkingTests
         {
             result = result && returnTheFinalClosestPoint(endpoint);
         }
+
         return result;
     }
 
@@ -113,6 +130,19 @@ public class OccupiedParkingTests
         {
             List<JsonNode> list_of_points = getFeaturesAtURL("http://" + endpoint + A_PARKING_NEAR_SAINT_PAUL);
             return listContainTheClosestPoint(list_of_points, longi, lat);
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+
+    private static boolean returnTheClosestSecretPoint(String endpoint)
+    {
+        try
+        {
+            List<JsonNode> list_of_points = getFeaturesAtURL("http://" + endpoint + SECRET_LOCATION);
+            return listContainTheClosestPoint(list_of_points, SECRET_LOCATION_LONG, SECRET_LOCATION_LAT);
         }
         catch (Exception e)
         {
