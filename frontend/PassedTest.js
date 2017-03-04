@@ -7,8 +7,8 @@ class PassedTest extends React.Component {
                     color: "white",
                     backgroundColor: "#8ee547",
                     fontSize: 24,
-                    margin: "0px 3px 3px",
-                    fontFamily: "Arial"
+                    fontFamily: "Arial",
+                    marginBottom: '5px'
                 },
                 text: {
                     margin: "0px 5px",

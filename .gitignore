@@ -58,3 +58,4 @@ results.*
 
 # NPM and node
 /node_modules
+index.js
