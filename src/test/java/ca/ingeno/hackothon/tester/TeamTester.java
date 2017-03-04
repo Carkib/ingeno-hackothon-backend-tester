@@ -44,7 +44,14 @@ public class TeamTester
     {
         for (Function<String, TestResult> testFunction : tests)
         {
-            teamResult.addTest(testFunction.apply(endPoint));
+            long startTime = System.currentTimeMillis();
+            TestResult result = testFunction.apply(endPoint);
+            long endTime = System.currentTimeMillis();
+            long durationTime = endTime - startTime;
+            String time = (result.isPassed()) ? " (" + String.valueOf(durationTime) + "ms)" : "";
+
+            result.setTestName(result.getTestName() + time);
+            teamResult.addTest(result);
         }
         return teamResult;
     }

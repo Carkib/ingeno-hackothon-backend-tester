@@ -16,6 +16,10 @@ public class TestResult {
     return testName;
   }
 
+  public void setTestName(String testName) {
+    this.testName = testName;
+  }
+
   public boolean isPassed() {
     return passed;
   }
