@@ -1,4 +1,2 @@
-aURL.com,potato
-anotherURL.com,carot
-anIPAdress,tomato
-hackoflove.herokuapp.com,boris
+hackoflove.herokuapp.com,Le gars qui a déjà gagné
+hackoflove-buttboys.herokuapp.com,Butt Boyz
